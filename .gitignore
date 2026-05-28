@@ -1,0 +1,7 @@
+dist/
+web-ext-artifacts/
+chrome-unpacked/
+*.crx
+*.xpi
+*.zip
+node_modules/
