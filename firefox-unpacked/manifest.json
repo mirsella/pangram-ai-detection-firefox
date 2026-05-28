@@ -1,0 +1,125 @@
+{
+  "manifest_version": 3,
+  "default_locale": "en",
+  "name": "__MSG_extensionName__",
+  "version": "2.3.2",
+  "description": "__MSG_extensionDescription__",
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "storage",
+    "scripting",
+    "clipboardRead",
+    "tabs",
+    "webRequest",
+    "webNavigation"
+  ],
+  "sidebar_action": {
+    "default_panel": "side-panel/index.html",
+    "default_icon": "icon-34.png",
+    "default_title": "Pangram AI Detection",
+    "open_at_install": false
+  },
+  "background": {
+    "scripts": [
+      "firefox-sidepanel.js",
+      "background.iife.js",
+      "firefox-history-sync.js",
+      "firefox-shortcuts.js"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "pangram-ai-detection-firefox@mirsella.local",
+      "data_collection_permissions": {
+        "required": [
+          "authenticationInfo",
+          "websiteActivity",
+          "websiteContent"
+        ],
+        "optional": [
+          "technicalAndInteraction"
+        ]
+      },
+      "strict_min_version": "142.0"
+    }
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_icon": "icon-34.png"
+  },
+  "icons": {
+    "128": "icon-128.png"
+  },
+  "commands": {
+    "open-feed-scanner": {
+      "suggested_key": {
+        "default": "Alt+Shift+P",
+        "mac": "MacCtrl+Shift+P"
+      },
+      "description": "Open Pangram side panel"
+    },
+    "check-selected-text": {
+      "suggested_key": {
+        "default": "Alt+Shift+C",
+        "mac": "MacCtrl+Shift+C"
+      },
+      "description": "Check selected text for AI"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "<all_urls>"
+      ],
+      "js": [
+        "content/index.iife.js"
+      ],
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "<all_urls>"
+      ],
+      "js": [
+        "content-ui/index.iife.js"
+      ]
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "<all_urls>"
+      ],
+      "css": [
+        "content.css"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "*.js",
+        "*.css",
+        "*.svg",
+        "*.woff2",
+        "icon-128.png",
+        "icon-34.png",
+        "fonts/*"
+      ],
+      "matches": [
+        "*://*/*"
+      ]
+    }
+  ]
+}

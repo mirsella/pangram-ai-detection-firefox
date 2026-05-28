@@ -1,0 +1,10 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "Pangram Labs provides accurate detection of AI-written text. Highlight text, right click, and select 'Check for AI Content.'"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "Pangram AI Detection"
+  }
+}
